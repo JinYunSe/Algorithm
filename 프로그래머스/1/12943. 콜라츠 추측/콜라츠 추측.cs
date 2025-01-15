@@ -1,4 +1,5 @@
 using System;
+using static System.UInt32;
 
 public class Solution {
     public int solution(long num) {
@@ -9,6 +10,7 @@ public class Solution {
         do{
             num = num % 2 == 0 ? num / 2 : num * 3 + 1;
             count++;
+            //Console.WriteLine(num+", "+count);
         }while(num != 1);
         
         return count > 500 ? -1 : count;
