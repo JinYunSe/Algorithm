@@ -1,8 +1,13 @@
 using System;
-using System.Linq;
 
 public class Solution {
     public int solution(int[] absolutes, bool[] signs) {
-        return absolutes.Select((element, index)=> signs[index] ? element : -1 * element).Sum();
+        int sum = 0;
+        
+        for(int i = 0; i < absolutes.Length; i++)
+            sum += signs[i] == true ? absolutes[i] : -1 * absolutes[i];
+        
+        
+        return sum;
     }
 }
