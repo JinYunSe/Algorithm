@@ -4,10 +4,11 @@ using System.Linq;
 public class Solution {
     public string solution(int n) 
     {
-        int share = n / 2;
-        int mod = n % 2;
-    
-        string temp = string.Concat(Enumerable.Repeat("수박",share));
-        return mod == 0 ? temp : temp + "수";
+        string temp = "";
+        for(int i = 0; i < n / 2; i++)
+        {
+            temp += "수박";
+        }
+        return n % 2 == 1 ? temp + "수" : temp; 
     }
 }
