@@ -1,10 +1,10 @@
 # [level 1] 내적 - 70128 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/70128?language=csharp) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/70128) 
 
 ### 성능 요약
 
-메모리: 31.5 MB, 시간: 0.23 ms
+메모리: 31.7 MB, 시간: 1.45 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 17일 17:39:44
+2025년 01월 20일 13:08:21
 
 ### 문제 설명
 
