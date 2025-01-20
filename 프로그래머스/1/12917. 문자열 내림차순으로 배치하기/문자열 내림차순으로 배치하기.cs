@@ -1,7 +1,10 @@
-using System.Linq;
-
 public class Solution {
     public string solution(string s) {
-        return string.Concat(s.OrderByDescending(element => element));
+        string answer = "";
+        char[] a = s.ToCharArray();
+        System.Array.Sort(a);
+        System.Array.Reverse(a);
+        answer = new string(a);
+        return answer;
     }
 }
