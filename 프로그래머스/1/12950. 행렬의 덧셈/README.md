@@ -1,10 +1,10 @@
 # [level 1] 행렬의 덧셈 - 12950 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12950?language=csharp) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12950) 
 
 ### 성능 요약
 
-메모리: 52 MB, 시간: 8.88 ms
+메모리: 53.2 MB, 시간: 1.98 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 01월 21일 14:14:51
+2025년 01월 21일 14:55:46
 
 ### 문제 설명
 
