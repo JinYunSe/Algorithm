@@ -9,7 +9,7 @@ public class Solution
         for(int i = 0; i < t.Length - p.Length + 1; i++)
         {
             long temp  = long.Parse(t.Substring(i, p.Length));
-            count += temp > long.Parse(p) ? 0 : 1;
+            if(temp <= long.Parse(p)) count++;
         }
         
         return count;
