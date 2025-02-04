@@ -11,17 +11,10 @@ public class Solution
         
         for(int i = 1; i < s.Length; i++)
         {
-            string temp = s.Substring(0, i);
-            for(int j = temp.Length - 1; j >= 0; j--)
-            {
-                if(s[i] == temp[j])
-                {
-                    result[i] = temp.Length - j;
-                    break;
-                }
-            }
+            int index = s.Substring(0, i).LastIndexOf(s[i]);
+            result[i] = index == -1 ? -1 : i - index;
         }
-        return result.Select(element => element == 0 ? -1 : element).ToArray();
+        return result;
     }
 }
 
