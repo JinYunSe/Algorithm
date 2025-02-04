@@ -16,6 +16,9 @@ public class Solution
                 if(!list.Contains(temp)) list.Add(temp);
             }
         }
-        return list.OrderBy(element => element).ToArray();
+        
+        list.Sort();
+        
+        return list.ToArray();
     }
 }
