@@ -8,9 +8,6 @@ public class Solution
         Queue<string> queue1 = new Queue<string>(cards1);
         Queue<string> queue2 = new Queue<string>(cards2);
         
-        foreach(var element in queue2)
-            Console.WriteLine(element);
-        
         bool check = true;
         for(int i = 0; i < goal.Length; i++)
         {
