@@ -4,15 +4,6 @@ using System.Collections.Generic;
 
 class Solution
 {
-    private bool IsPrime(int num)
-    {
-        for (int i = 2; i <= (int)Math.Sqrt(num); i++)
-        {
-            if (num % i == 0) return false;
-        }
-        return true;
-    }
-    
     public int solution(int[] nums)
     {
         List<int> list = new List<int>();
@@ -30,9 +21,18 @@ class Solution
         
         int count = 0;
         
-        foreach (int num in list)
+        for(int i = 0; i < list.Count; i++)
         {
-            if (IsPrime(num)) count++;
+            bool check = true;
+            for(int j = 2; j <= (int)Math.Sqrt(list[i]); j++)
+            {
+                if(list[i] % j == 0)
+                {
+                    check = false;
+                    break;
+                }
+            }
+            if(check) count++;
         }
         
         return count;
