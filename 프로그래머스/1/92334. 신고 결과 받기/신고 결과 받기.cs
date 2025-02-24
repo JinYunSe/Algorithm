@@ -41,7 +41,6 @@ public class Solution {
             }
             list.Add(count);
         }
-
         
         return list.ToArray();
     }
