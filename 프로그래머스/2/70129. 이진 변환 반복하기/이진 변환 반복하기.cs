@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 public class Solution {
     public int[] solution(string s) {
@@ -8,14 +9,10 @@ public class Solution {
         
         while(s.Length != 1)
         {
-            string temp = "";
-            for(int i = 0; i < s.Length; i++)
-            {
-                if(s[i] == '0') zeroCount++;
-                else temp += s[i];
-            }
+            int oneCount = s.Where(element=> element == '1').Count();
+            zeroCount += s.Length - oneCount;
+            s = Convert.ToString(oneCount, 2);
             count++;
-            s = Convert.ToString(temp.Length, 2);
         }
         
         return new int[] { count , zeroCount };
