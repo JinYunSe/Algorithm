@@ -3,14 +3,14 @@ using static System.Math;
 
 class Solution
 {
-    public int solution(int n, double a, double b)
+    public int solution(int n, int a, int b)
     {
         int answer = 0;
         
         while(a != b)
         {
-            a = Math.Ceiling(a / 2);
-            b = Math.Ceiling(b / 2);
+            a = a / 2 + a % 2;
+            b = b / 2 + b % 2;
             answer++;
         }
         
