@@ -2,23 +2,23 @@ using System;
 using System.Collections.Generic;
 
 public class Solution {
-    public char[] alphabet = {'A', 'E', 'I', 'O', 'U'};
+    public char[] alpabet = {'A', 'E', 'I', 'O', 'U'};
     public List<string> list = new List<string>();
     
-    public void DFS(string currentWord, int len)
+    public void DFS(string currentWords)
     {
-        if(len > 5) return;
+        if(currentWords.Length > 5) return;
         
-        list.Add(currentWord);
+        list.Add(currentWords);
         
-        for(int i = 0; i < alphabet.Length; i++)
-            DFS(currentWord + alphabet[i], len + 1);
+        for(int i = 0; i < alpabet.Length; i++)
+            DFS(currentWords + alpabet[i]);
         
         return;
     }
     
     public int solution(string word) {
-        DFS("", 0);
+        DFS("");
         return list.IndexOf(word);
     }
 }

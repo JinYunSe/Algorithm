@@ -1,10 +1,10 @@
 # [level 2] 모음 사전 - 84512 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/84512?language=cpp) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/84512?language=csharp) 
 
 ### 성능 요약
 
-메모리: 4.21 MB, 시간: 0.61 ms
+메모리: 33 MB, 시간: 5.08 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 03월 20일 15:36:10
+2025년 03월 20일 16:17:39
 
 ### 문제 설명
 
