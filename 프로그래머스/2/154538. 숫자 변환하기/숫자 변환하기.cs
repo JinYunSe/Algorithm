@@ -3,16 +3,17 @@ using System.Collections.Generic;
 
 public class Solution {
     public int solution(int x, int y, int n) {
-        if(x == y) return 0;
-        
-        HashSet<int> answer = new HashSet<int>() { x + n, x * 2, x * 3 } ;
+        if(x == y) return 0; 
+        HashSet<int> hashSet = new HashSet<int>(){x + n, x * 2, x * 3};
         int count = 1;
+        
         while(true)
         {
-            if(answer.Contains(y)) break;
+            if(hashSet.Contains(y)) break;
             count++;
             HashSet<int> temp = new HashSet<int>();
-            foreach(int element in answer)
+            
+            foreach(int element in hashSet)
             {
                 int result = element + n;
                 if(result <= y) temp.Add(result);
@@ -21,9 +22,12 @@ public class Solution {
                 result = element * 3;
                 if(result <= y) temp.Add(result);
             }
+            
             if(temp.Count == 0) return -1;
-            answer = temp;
+            
+            hashSet = temp;
         }
+        
         
         return count;
     }
