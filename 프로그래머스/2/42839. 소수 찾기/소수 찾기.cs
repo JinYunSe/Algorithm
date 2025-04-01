@@ -10,11 +10,10 @@ public class Solution {
     // 현재 만들어진 숫자(문자열)
     // numbers(제공 될 문자열)
     public void MakeNumber(int length, string currentWords, string numbers) {
-        
-        if(currentWords.Length == length + 1) return;
-        
         int.TryParse(currentWords, out int result);
         if(result != 0 && result != 1) hashSet.Add(result);
+        
+        if(currentWords.Length == length) return;
         
         for(int i = 0; i < numbers.Length; i++)
         {
