@@ -17,7 +17,7 @@ public class Solution {
         
         total /= 2;
         
-        int count = 0, len = (array1.Length + array2.Length) * 3;
+        int count = 0, len = (array1.Length + array2.Length) * 2;
         
         while(count <= len)
         {
