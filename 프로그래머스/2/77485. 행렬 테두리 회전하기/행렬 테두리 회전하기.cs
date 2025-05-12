@@ -23,22 +23,22 @@ public class Solution {
             int temp = matrix[x1, y1];
             int min = temp;
 
-            // 위쪽
+            // 왼쪽 -> 오른쪽 이동
             for (int i = x1; i < x2; i++) {
                 matrix[i, y1] = matrix[i + 1, y1];
                 min = Math.Min(min, matrix[i, y1]);
             }
-            // 오른쪽
+            // 위 -> 아래 이동
             for (int i = y1; i < y2; i++) {
                 matrix[x2, i] = matrix[x2, i + 1];
                 min = Math.Min(min, matrix[x2, i]);
             }
-            // 아래쪽
+            // 오른쪽 -> 왼쪽 이동
             for (int i = x2; i > x1; i--) {
                 matrix[i, y2] = matrix[i - 1, y2];
                 min = Math.Min(min, matrix[i, y2]);
             }
-            // 왼쪽
+            // 아래 -> 위 이동
             for (int i = y2; i > y1 + 1; i--) {
                 matrix[x1, i] = matrix[x1, i - 1];
                 min = Math.Min(min, matrix[x1, i]);
