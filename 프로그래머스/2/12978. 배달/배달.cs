@@ -38,11 +38,6 @@ class Solution
         {
             int point1 = road[i, 0], point2 = road[i, 1], cost = road[i, 2];
             
-            if(point1 == 1)
-                startToPointCost[point2] = cost;
-            else if(point2 == 1)
-                startToPointCost[point1] = cost;
-            
             if(!dict.ContainsKey(point1)) dict[point1] = new List<Value>();
             dict[point1].Add(new Value(point2, cost));
             
@@ -62,7 +57,7 @@ class Solution
     // 길 연결 정보 dictionary
     // 방문 여부
     // 현재 위치
-    // 시작 - 해당 위치 비용
+    // 시작 - 해당 위치(가상의 다리) 최소 비용
     // 제한 비용
     // 현재 비용
     public void DFS(Dictionary<int, List<Value>> dict, bool[] visited, int currentPoint, int[] startToPointCost, int K, int currentCost)
