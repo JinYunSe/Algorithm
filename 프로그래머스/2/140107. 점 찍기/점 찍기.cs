@@ -11,9 +11,7 @@ public class Solution {
         for(int i = 0; i <= d; i+=k)
         {
             int sqrt = (int)Math.Sqrt(num - Math.Pow(i, 2));
-            int count = 1;
-            
-            total += (sqrt / k) + count;
+            total += (sqrt / k) + 1;
         }
         
         return total;
