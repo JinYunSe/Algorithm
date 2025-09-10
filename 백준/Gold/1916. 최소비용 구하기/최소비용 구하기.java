@@ -3,87 +3,89 @@ import java.util.*;
 
 public class Main {
 	
-	public static class NextPoint
+	public static class Node implements Comparable<Node>
 	{
-		private int point;
-		private int cost;
+		int point;
+		int cost;
 		
-		public NextPoint(int point, int cost) {
+		public Node(int point, int cost)
+		{
 			this.point = point;
 			this.cost = cost;
 		}
-		
-		public int getPoint() {
-			return point;
-		}
-		public void setPoint(int point) {
-			this.point = point;
-		}
-		public int getCost() {
-			return cost;
-		}
-		public void setCost(int cost) {
-			this.cost = cost;
+
+		@Override
+		public int compareTo(Node o) {
+			// TODO Auto-generated method stub
+			return Integer.compare(this.cost, o.cost);
 		}
 	}
 	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int N = Integer.parseInt(br.readLine());
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
-		HashMap<Integer, LinkedList<NextPoint>> dict = new HashMap<Integer,LinkedList<NextPoint>>();
+		int cityCount = Integer.parseInt(br.readLine());
+		int edgeCount = Integer.parseInt(br.readLine());
 		
-		int inputInfoCount = Integer.parseInt(br.readLine());
+		HashMap<Integer, LinkedList<Node>> map = new HashMap<Integer, LinkedList<Node>>();
+		StringTokenizer stz;
 		
-		for(int i = 0; i < inputInfoCount; i++)
+		for(int i = 0; i < edgeCount; i++)
 		{
-			int[] info = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			stz = new StringTokenizer(br.readLine());
 			
-			if(!dict.containsKey(info[0])) dict.put(info[0], new LinkedList<NextPoint>());
+			int goPoint = Integer.parseInt(stz.nextToken()) - 1;
+			int destinationPoint = Integer.parseInt(stz.nextToken()) - 1;
+			int cost = Integer.parseInt(stz.nextToken());
 			
-			dict.get(info[0]).add(new NextPoint(info[1], info[2]));
+			if(!map.containsKey(goPoint)) map.put(goPoint, new LinkedList<Node>());
+			
+			map.get(goPoint).add(new Node(destinationPoint, cost));
 		}
 		
-		int[] busCost = new int[N + 1];
-		Arrays.fill(busCost, Integer.MAX_VALUE);
+		stz = new StringTokenizer(br.readLine());
 		
-				
-		int[] point = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+		int startPoint = Integer.parseInt(stz.nextToken());
+		int endPoint = Integer.parseInt(stz.nextToken());
+		
 
-		busCost[point[0]] = 0;
+		int[] totalCost = new int[cityCount];
+		Arrays.fill(totalCost, Integer.MAX_VALUE);
 		
+		totalCost[startPoint - 1] = 0;
 		
-		boolean[] visited = new boolean[N + 1];
+		PriorityQueue<Node> queue = new PriorityQueue<Node>();
 		
-		for(int i = 0; i < N; i++)
+		queue.add(new Node(startPoint - 1, 0));
+		
+		while(!queue.isEmpty())
 		{
-			int min = Integer.MAX_VALUE;
-			int curPoint = -1;
+			Node currentNode = queue.poll();
 			
-			for(int j = 1; j <= N; j++)
+			int currentPoint = currentNode.point;
+			int cost = currentNode.cost;
+			
+			if(cost != totalCost[currentPoint]) continue;
+			
+			if(currentPoint == endPoint - 1) break;
+			
+			if(!map.containsKey(currentPoint)) continue;
+			
+			for(Node nextNode : map.get(currentPoint))
 			{
-				if(!visited[j]&& busCost[j] < min)
+				int nextPoint = nextNode.point;
+				int changeCost = nextNode.cost + cost;
+				
+				if(changeCost < totalCost[nextPoint])
 				{
-					min = busCost[j];
-					curPoint = j;
+					totalCost[nextPoint] = changeCost;
+					queue.add(new Node(nextPoint, changeCost));
 				}
 			}
-			
-			if(curPoint == -1) break;
-			if(curPoint == point[1]) break;
-			
-			visited[curPoint] = true;
-			
-            for (NextPoint np : dict.getOrDefault(curPoint, new LinkedList<>())) {
-                int v = np.getPoint();
-                int w = np.getCost();
-                if (!visited[v] && busCost[curPoint] != Integer.MAX_VALUE
-                        && busCost[v] > busCost[curPoint] + w) {
-                	busCost[v] = busCost[curPoint] + w;
-                }
-            }
 		}
 		
-		System.out.println(busCost[point[1]]);
+		bw.write(totalCost[endPoint - 1]+"\n");
+		bw.flush();
 	}
 }
