@@ -2,24 +2,29 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-	public static void main(String[] args) throws NumberFormatException, IOException {
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		int n = Integer.parseInt(br.readLine());
-		
-		
-		HashSet<Integer> hashSet = new HashSet<Integer>();
-		
-		String[] nInput = br.readLine().split(" ");
-		for(int i = 0; i < n; i++) hashSet.add(Integer.parseInt(nInput[i]));
-		
-		int m = Integer.parseInt(br.readLine());
-		
-		int[] num = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-		
-		
-		int[] result = new int[m];
-		for(int i = 0; i < m; i++) System.out.print((hashSet.contains(num[i]) ? 1 : 0) + " "); 
-	}
+    public static void main(String[] args) throws IOException {
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    	
+    	int firstCount = Integer.parseInt(br.readLine());
+    	
+    	HashSet<Integer> firstCard = new HashSet<Integer>();
+
+    	StringTokenizer stz = new StringTokenizer(br.readLine());
+    	
+    	for(int i = 0; i < firstCount; i++) firstCard.add(Integer.parseInt(stz.nextToken()));
+    	
+    	int secondCount = Integer.parseInt(br.readLine());
+    	
+    	stz = new StringTokenizer(br.readLine());
+    	
+    	for(int i = 0; i < secondCount; i++)
+    	{
+    		int temp = Integer.parseInt(stz.nextToken());
+    		int result = firstCard.contains(temp) ? 1 : 0;
+    		
+    		bw.write(result+" ");
+    	}
+    	bw.flush();
+    }
 }
